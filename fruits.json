@@ -1,0 +1,39 @@
+[
+    {
+    "food_name":"Apple" ,
+    "food_group":"fruit",
+    "discription":"apple",
+    "calories": 0,
+    "protin":0,
+    "carbs":0,
+    "fats":0
+    },
+    {
+    "food_name":"Avocado" ,
+    "food_group":"fruit",
+    "discription":"Avocado",
+    "calories":0,
+    "protin":0,
+    "carbs":0,
+    "fats":0
+    },
+    {
+    "food_name":"Banana" ,
+    "food_group":"fruit",
+    "discription":"Banana",
+    "calories":0,
+    "protin":0,
+    "carbs":0,
+    "fats":0
+    },
+    {
+    "food_name":"Avocado" ,
+    "food_group":"fruit",
+    "discription":"Avocado",
+    "calories":0,
+    "protin":0,
+    "carbs":0,
+    "fats":0
+    }
+]
+

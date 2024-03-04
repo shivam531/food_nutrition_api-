@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food_API</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <h1>food and nutrition Table</h1>
+    <table id="food_api_chat" border="1">
+        <thead>
+             <th>Food_name</th>
+             <th>Food_group</th>
+             <th>Discription</th>
+             <th>calories</th>
+             <th>protin</th>
+             <th>carbs</th>
+             <th>fat</th>  
+             <th>Action</th> 
+        </thead>
+        <tbody id="tbody_data">
+              
+        </tbody>
+    </table>
+    <script>
+        fetch('http://localhost:3200/getfooddata')
+        .then((res)=>res.json())
+        .then((data)=>{
+            console.log('fetched Data',data);
+            const tablebdy = document.getElementById('tbody_data');
+            tablebdy.innerHTML='';
+            //populate
+            data.forEach(food => {
+                const row = document.createElement('tr');
+                row.innerHTML=`
+                 <td>${food.food_name}</td> 
+                 <td>${food.food_group}</td> 
+                 <td>${food.discription}</td> 
+                 <td>${food.calories}</td> 
+                 <td>${food.protin}</td> 
+                 <td>${food.carbs}</td> 
+                 <td>${food.fats}</td> 
+                 <td><button onclick="deleteRow('${food.food_name}')">Delete</button>
+                     <button onclick="editRow(this)">Edit</button>
+                     <button style="display:none;" onclick="save">Save</button>
+                 </td>
+                `
+                  
+                tablebdy.appendChild(row);
+                
+
+
+            })
+        })
+        .catch((e)=>console.log(e))
+
+         const deleteRow= async(foods) => {
+                try{
+                    const response = await fetch(`http://localhost:3200/foodchat/${foods}`,{
+                        method:'DELETE'
+                    })
+                    const data=await response.json();  
+                    //referesh
+                    location.reload();
+                }
+                catch(e){
+                    console.log(e);
+                }
+         }
+        
+
+    </script>
+</body>
+</html>
